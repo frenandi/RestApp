@@ -51,7 +51,7 @@ var routes = function(Book){
                 if(err)
                     res.status(500).send(err);
                 else
-                    res.json(books);
+                    res.json(book);
             });
         })
         .patch(function(req,res){
@@ -64,7 +64,7 @@ var routes = function(Book){
                 if(err)
                     res.status(500).send(err);
                 else
-                    res.json(books);
+                    res.json(book);
             });
         });
     return bookRouter;
