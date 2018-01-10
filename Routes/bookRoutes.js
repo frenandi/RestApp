@@ -2,14 +2,9 @@ var express = require("express");
 
 var routes = function(Book){
     var bookRouter = express.Router();
-
+    var bookController = require("../controllers/bookController")(Book);
     bookRouter.route("/")
-        .post(function(req,res){
-            var book = new Book(req.body);
-            book.save();
-            console.log(book);
-            res.status(201).send(book);
-        })
+        .post(bookController.post)
         .get(function(req,res){
             var query = {};
             if(req.query.genre){
