@@ -1,9 +1,17 @@
 var bookController = function(Book){
     var post = function(req,res){
         var book = new Book(req.body);
-        book.save();
-        console.log(book);
-        res.status(201).send(book);
+        if(!req.body.title){
+            res.status(400);
+            res.send("Tittle is required");
+            console.log("here-------------------------"+res.status.args[0]);
+        }
+        else{
+            book.save();
+            console.log(book);
+            res.status(201);
+            res.send(book);
+        }        
     };
 
     var get = function(req,res){
